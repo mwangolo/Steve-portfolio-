@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stephen Mwangolo Ruwa | Portfolio</title>
+    <title>Stephen Mwangolo Ruwa | Web Developer & ICT Specialist</title>
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -75,7 +75,7 @@
             padding: 0 20px;
             /* Tech Background Image */
             background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.7)), 
-                        url('https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1600');
+                        url('https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=1600');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -112,7 +112,7 @@
         .skills-container { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
         .skill-pill { background: #cbd5e1; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; color: var(--primary); }
 
-        /* --- 5. PORTFOLIO GRID (FIXED IMAGES) --- */
+        /* --- 5. PORTFOLIO GRID --- */
         .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         
         .card {
@@ -129,7 +129,7 @@
             height: 200px;
             object-fit: cover;
             border-bottom: 1px solid #f0f0f0;
-            background-color: #e2e8f0; /* Grey fallback color if image fails */
+            background-color: #e2e8f0; 
         }
         
         .card-content { padding: 25px; }
@@ -179,45 +179,49 @@
         </ul>
     </header>
 
-    <!-- 1. Home Section (Hero) -->
+    <!-- 1. HERO SECTION -->
     <section id="home">
         <div class="hero-content">
             <h1>Stephen Mwangolo Ruwa</h1>
-            <h2>ICT Specialist | Networking & Cybersecurity</h2>
-            <p>Building secure networks and efficient digital solutions in Mtwapa, Kenya.</p>
+            <!-- UPDATED HERO TITLE -->
+            <h2>ICT Specialist & Web Developer</h2>
+            <p>Creating professional websites, securing networks, and optimizing digital infrastructure in Mtwapa, Kenya.</p>
             <br>
-            <a href="#portfolio" class="btn btn-primary">See My Work</a>
+            <a href="#portfolio" class="btn btn-primary">View My Work</a>
             <a href="#contact" class="btn btn-outline">Contact Me</a>
         </div>
     </section>
 
-    <!-- 2. About Section -->
+    <!-- 2. ABOUT SECTION -->
     <section id="about">
         <div class="section-header">
             <h2>About Me</h2>
             <div class="divider"></div>
         </div>
         <div class="about-grid">
-            <!-- Ensure your photo file is named 'stephen.jpg' and is in the same folder -->
+            <!-- PHOTO: Ensure your photo is named 'stephen.jpg' -->
             <div class="photo-frame">
-                <img src="stephen.png" alt="Stephen Mwangolo" onerror="this.src='https://via.placeholder.com/300?text=Photo+Not+Found'">
+                <img src="stephen.jpg" alt="Stephen Mwangolo" onerror="this.src='https://via.placeholder.com/300?text=Photo+Not+Found'">
             </div>
             
             <div class="about-text">
                 <h3>Who am I?</h3>
-                <p>I am a dedicated ICT Specialist based in Mtwapa. I specialize in diagnosing hardware issues, configuring corporate networks, and implementing cybersecurity protocols. My goal is to help businesses run smoothly and securely.</p>
+                <p>I am a passionate ICT Specialist and Web Developer. I combine technical expertise in networking and security with creative web design skills. Whether it's fixing hardware, securing a server, or building a modern website for a business, I deliver reliable digital solutions.</p>
                 <div class="skills-container">
+                    <!-- WEB DEVELOPMENT SKILLS ADDED -->
+                    <span class="skill-pill">Web Development</span>
+                    <span class="skill-pill">HTML5 & CSS3</span>
+                    <span class="skill-pill">JavaScript</span>
+                    <span class="skill-pill">Responsive Design</span>
                     <span class="skill-pill">Networking</span>
                     <span class="skill-pill">Cybersecurity</span>
-                    <span class="skill-pill">Hardware Repair</span>
-                    <span class="skill-pill">Windows Server</span>
-                    <span class="skill-pill">Linux Admin</span>
+                    <span class="skill-pill">System Admin</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. Portfolio Section (NEW RELIABLE IMAGES) -->
+    <!-- 3. PORTFOLIO SECTION -->
     <section id="portfolio">
         <div class="section-header">
             <h2>My Projects</h2>
@@ -225,9 +229,17 @@
         </div>
         <div class="project-grid">
             
-            <!-- Project 1: Networking -->
+            <!-- Project 1: Web Development (NEW) -->
             <div class="card">
-                <!-- Stable Pexels Image: Server Room -->
+                <img src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Web Development" class="card-image">
+                <div class="card-content">
+                    <h3>Modern Business Website</h3>
+                    <p>Developed a fully responsive, mobile-friendly portfolio website for a local client using HTML, CSS, and JavaScript.</p>
+                </div>
+            </div>
+
+            <!-- Project 2: Networking -->
+            <div class="card">
                 <img src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Networking Project" class="card-image">
                 <div class="card-content">
                     <h3>Enterprise Network Design</h3>
@@ -235,9 +247,8 @@
                 </div>
             </div>
 
-            <!-- Project 2: SysAdmin -->
+            <!-- Project 3: SysAdmin -->
             <div class="card">
-                <!-- Stable Pexels Image: Code/Monitor -->
                 <img src="https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=600" alt="System Admin" class="card-image">
                 <div class="card-content">
                     <h3>System Administration</h3>
@@ -245,9 +256,8 @@
                 </div>
             </div>
 
-            <!-- Project 3: Security -->
+            <!-- Project 4: Security -->
             <div class="card">
-                <!-- Stable Pexels Image: Security/Hacker -->
                 <img src="https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cyber Security" class="card-image">
                 <div class="card-content">
                     <h3>Security Audit</h3>
@@ -258,7 +268,7 @@
         </div>
     </section>
 
-    <!-- 4. Resume Section -->
+    <!-- 4. RESUME SECTION -->
     <section id="resume">
         <div class="section-header">
             <h2>Experience</h2>
@@ -266,9 +276,9 @@
         </div>
         <div class="timeline">
             <div class="timeline-item">
-                <h4>ICT Consultant / Freelancer</h4>
+                <h4>Freelance Web Developer & ICT Consultant</h4>
                 <p style="color:var(--accent); font-weight:bold;">2023 - Present</p>
-                <p>Self-employed in Mtwapa. Delivering IT support, hardware maintenance, and network setup for local clients.</p>
+                <p>Self-employed in Mtwapa. Designing custom websites for small businesses, providing IT support, and maintaining secure networks.</p>
             </div>
             <div class="timeline-item">
                 <h4>IT Support Intern</h4>
@@ -278,11 +288,11 @@
         </div>
     </section>
 
-    <!-- 5. Contact Section -->
+    <!-- 5. CONTACT SECTION -->
     <section id="contact">
         <div class="contact-box">
             <h2>Get In Touch</h2>
-            <p>Ready to secure your network? Let's talk.</p>
+            <p>Need a website or network support? Let's talk.</p>
             <div class="contact-details">
                 <div class="contact-item"><i class="fas fa-phone"></i> +254 719 477 081</div>
                 <div class="contact-item"><i class="fas fa-envelope"></i> stephenmwangolo@gmail.com</div>
