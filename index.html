@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stephen Mwangolo Ruwa | ICT Portfolio</title>
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- 1. RESET & VARIABLES --- */
+        :root {
+            --primary: #0f172a;    /* Navy Blue */
+            --accent: #0ea5e9;     /* Bright Blue */
+            --text: #334155;       /* Dark Grey */
+            --bg-light: #f8fafc;   /* Very Light Grey */
+            --white: #ffffff;
+            --nav-height: 70px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { 
+            scroll-behavior: smooth; 
+            scroll-padding-top: var(--nav-height); 
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- 2. FIXED NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
+        .logo span { color: var(--accent); }
+
+        .nav-menu { display: flex; gap: 30px; }
+        .nav-link { font-weight: 600; color: var(--primary); position: relative; }
+        .nav-link.active { color: var(--accent); }
+        .nav-link.active::after {
+            content: ''; position: absolute; bottom: -5px; left: 0;
+            width: 100%; height: 2px; background: var(--accent);
+        }
+
+        .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); }
+
+        /* --- 3. HERO SECTION --- */
+        #home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+            /* Tech Background Image */
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.7)), 
+                        url('https://images.unsplash.com/photo-1558494949-ef526b0042a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-content h1 { font-size: 3.5rem; margin-bottom: 15px; font-weight: 700; }
+        .hero-content h2 { font-size: 1.5rem; font-weight: 400; color: var(--accent); margin-bottom: 30px; }
+        
+        .btn { display: inline-block; padding: 12px 30px; border-radius: 50px; font-weight: 700; margin: 10px; }
+        .btn-primary { background: var(--accent); color: var(--white); }
+        .btn-primary:hover { background: #0284c7; transform: translateY(-3px); }
+        .btn-outline { border: 2px solid var(--accent); color: var(--accent); }
+        .btn-outline:hover { background: var(--accent); color: var(--white); transform: translateY(-3px); }
+
+        /* --- 4. ABOUT SECTION --- */
+        section { padding: 80px 10%; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; }
+        section:nth-child(even) { background: var(--white); }
+        section:nth-child(odd) { background: var(--bg-light); }
+
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; }
+        .divider { height: 4px; width: 60px; background: var(--accent); margin: 0 auto; border-radius: 2px; }
+
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+
+        .photo-frame {
+            width: 280px; height: 280px; margin: 0 auto;
+            border-radius: 50%; border: 8px solid var(--white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); overflow: hidden;
+        }
+        .photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+
+        .about-text h3 { margin-bottom: 15px; color: var(--primary); font-size: 1.8rem; }
+        .skills-container { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+        .skill-pill { background: #cbd5e1; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; color: var(--primary); }
+
+        /* --- 5. PORTFOLIO GRID (UPDATED FOR IMAGES) --- */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .card {
+            background: var(--white); border-radius: 15px; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: 0.3s;
+            overflow: hidden; /* Ensures image stays inside rounded corners */
+            border-bottom: 4px solid transparent;
+        }
+        
+        .card:hover { transform: translateY(-10px); border-bottom: 4px solid var(--accent); }
+        
+        /* New CSS for Project Images */
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover; /* Ensures images are cropped nicely */
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .card-content { padding: 25px; }
+        .card-content h3 { margin-bottom: 10px; color: var(--primary); }
+        .card-content p { font-size: 0.95rem; color: #64748b; }
+
+        /* --- 6. RESUME & CONTACT --- */
+        .timeline { border-left: 3px solid var(--accent); margin-left: 10px; }
+        .timeline-item { padding-left: 30px; margin-bottom: 40px; position: relative; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -9px; top: 5px;
+            width: 15px; height: 15px; background: var(--white);
+            border: 3px solid var(--accent); border-radius: 50%;
+        }
+
+        .contact-box { background: var(--primary); color: var(--white); padding: 50px; border-radius: 20px; text-align: center; }
+        .contact-details { margin: 30px 0; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .contact-item i { color: var(--accent); margin-right: 10px; }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed; top: var(--nav-height); right: -100%;
+                width: 100%; height: 100vh; background: var(--white);
+                flex-direction: column; align-items: center; justify-content: center;
+                transition: 0.3s;
+            }
+            .nav-menu.active { right: 0; }
+            .hamburger { display: block; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .about-grid { grid-template-columns: 1fr; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">Stephen<span>.MR</span></a>
+        <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <ul class="nav-menu">
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+            <li><a href="#resume" class="nav-link">Resume</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </header>
+
+    <!-- 1. Home Section (Hero) -->
+    <section id="home">
+        <div class="hero-content">
+            <h1>Stephen Mwangolo Ruwa</h1>
+            <h2>ICT Specialist | Networking & Cybersecurity</h2>
+            <p>Building secure networks and efficient digital solutions in Mtwapa, Kenya.</p>
+            <br>
+            <a href="#portfolio" class="btn btn-primary">See My Work</a>
+            <a href="#contact" class="btn btn-outline">Contact Me</a>
+        </div>
+    </section>
+
+    <!-- 2. About Section -->
+    <section id="about">
+        <div class="section-header">
+            <h2>About Me</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="about-grid">
+            <!-- Ensure your photo file is named 'stephen.jpg' and is in the same folder -->
+            <div class="photo-frame">
+                <img src="stephen.jpg" alt="Stephen Mwangolo" onerror="this.src='https://via.placeholder.com/300?text=Photo+Not+Found'">
+            </div>
+            
+            <div class="about-text">
+                <h3>Who am I?</h3>
+                <p>I am a dedicated ICT Specialist based in Mtwapa. I specialize in diagnosing hardware issues, configuring corporate networks, and implementing cybersecurity protocols. My goal is to help businesses run smoothly and securely.</p>
+                <div class="skills-container">
+                    <span class="skill-pill">Networking</span>
+                    <span class="skill-pill">Cybersecurity</span>
+                    <span class="skill-pill">Hardware Repair</span>
+                    <span class="skill-pill">Windows Server</span>
+                    <span class="skill-pill">Linux Admin</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Portfolio Section (UPDATED IMAGES) -->
+    <section id="portfolio">
+        <div class="section-header">
+            <h2>My Projects</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="project-grid">
+            
+            <!-- Project 1: Networking -->
+            <div class="card">
+                <!-- Image of Network Cables/Server -->
+                <img src="https://images.unsplash.com/photo-1544197150-b99a580bbcbf?auto=format&fit=crop&w=600&q=80" alt="Networking Project" class="card-image">
+                <div class="card-content">
+                    <h3>Enterprise Network Design</h3>
+                    <p>Designed a secure network topology using Cisco Packet Tracer with VLAN segmentation, strict firewall rules, and switch configuration.</p>
+                </div>
+            </div>
+
+            <!-- Project 2: SysAdmin -->
+            <div class="card">
+                <!-- Image of Computer/Monitor/Dashboards -->
+                <img src="https://images.unsplash.com/photo-1551739440-5dd934dbe319?auto=format&fit=crop&w=600&q=80" alt="System Admin" class="card-image">
+                <div class="card-content">
+                    <h3>System Administration</h3>
+                    <p>Managed Active Directory users and Group Policies for a small business. Handled backup solutions and user access rights.</p>
+                </div>
+            </div>
+
+            <!-- Project 3: Security -->
+            <div class="card">
+                <!-- Image of Cybersecurity Code/Lock -->
+                <img src="https://images.unsplash.com/photo-1563206767-5b1d97289374?auto=format&fit=crop&w=600&q=80" alt="Cyber Security" class="card-image">
+                <div class="card-content">
+                    <h3>Security Audit</h3>
+                    <p>Performed vulnerability scanning using Kali Linux and Nmap to identify weak points in a local test server environment.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 4. Resume Section -->
+    <section id="resume">
+        <div class="section-header">
+            <h2>Experience</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>ICT Consultant / Freelancer</h4>
+                <p style="color:var(--accent); font-weight:bold;">2023 - Present</p>
+                <p>Self-employed in Mtwapa. Delivering IT support, hardware maintenance, and network setup for local clients.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>IT Support Intern</h4>
+                <p style="color:var(--accent); font-weight:bold;">2021 - 2023</p>
+                <p>Assisted senior admins with troubleshooting, software deployment, and daily system checks.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Contact Section -->
+    <section id="contact">
+        <div class="contact-box">
+            <h2>Get In Touch</h2>
+            <p>Ready to secure your network? Let's talk.</p>
+            <div class="contact-details">
+                <div class="contact-item"><i class="fas fa-phone"></i> +254 719 477 081</div>
+                <div class="contact-item"><i class="fas fa-envelope"></i> stephenmwangolo@gmail.com</div>
+                <div class="contact-item"><i class="fas fa-map-marker-alt"></i> 253-80109, Mtwapa, KE</div>
+            </div>
+            <a href="mailto:stephenmwangolo@gmail.com" class="btn btn-primary" style="background: white; color: var(--primary);">Send Email</a>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 20px; background: #020617; color: #64748b;">
+        <p>&copy; 2024 Stephen Mwangolo Ruwa. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        function toggleMenu() { document.querySelector('.nav-menu').classList.toggle('active'); }
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => { document.querySelector('.nav-menu').classList.remove('active'); });
+        });
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= (sectionTop - 150)) { current = section.getAttribute('id'); }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) { link.classList.add('active'); }
+            });
+        });
+    </script>
+</body>
+</html>
